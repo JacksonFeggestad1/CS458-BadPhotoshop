@@ -1,0 +1,48 @@
+This module provides a basic example of how to use the Python SFTP (Secure File Transfer Protocol) protocols.
+For official documentation please visit https://docs.paramiko.org/en/2.2/api/sftp.html
+
+
+NOTE: local_path is client PC, remote_path is server
+
+To use this module, you need to have the `paramiko` library installed. You can install it using pip:
+
+    pip install paramiko
+
+Once you have `paramiko` installed, you can import the necessary classes and functions from the library:
+
+    from paramiko import SSHClient, SFTPClient
+
+To establish an SFTP connection, you need to create an SSHClient object and connect to the remote server:
+
+    ssh = SSHClient()
+    ssh.connect(hostname, username, password)
+
+After establishing the SSH connection, you can create an SFTPClient object to perform SFTP operations:
+
+    sftp = ssh.open_sftp()
+
+To upload a file to the remote server, you can use the `put` method of the SFTPClient object:
+
+    sftp.put(local_path, remote_path)
+
+To download a file from the remote server, you can use the `get` method of the SFTPClient object:
+
+    sftp.get(remote_path, local_path)
+
+To remove a file from the remote server, you can use the `get` method of the SFTPClient object:
+    
+    sftp.remove(remote_path)
+
+To create a new folder on the remote server, you can use the `mkdir` method of the SFTPClient object:
+
+    sftp.mkdir(folder_name)
+
+To close the SFTP connection, you can use the `close` method of the SFTPClient object:
+
+    sftp.close()
+
+To close the SSH connection, you can use the `close` method of the SSHClient object:
+
+    ssh.close()
+
+Note that this is a basic example and there are many more advanced features and options available in the `paramiko` library for working with SFTP protocols. Please refer to the official documentation for more information.
